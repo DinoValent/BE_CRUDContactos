@@ -1,4 +1,5 @@
 using BE_CRUDContactos.Models;
+using BE_CRUDContactos.Models.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,13 @@ builder.Services.AddDbContext<AplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Conexion"));
 });
+
+//Automapper
+builder.Services.AddAutoMapper(typeof(Program));
+
+//Add services
+builder.Services.AddScoped<IContactoRepository, ContactoRepository>(); //Inyeccion de dependencia
+
 
 var app = builder.Build();
 
