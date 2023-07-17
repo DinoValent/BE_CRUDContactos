@@ -27,8 +27,9 @@ builder.Services.AddDbContext<AplicationDbContext>(options =>
 builder.Services.AddAutoMapper(typeof(Program));
 
 //Add services
-builder.Services.AddScoped<IContactoRepository, ContactoRepository>(); //Inyeccion de dependencia
+builder.Services.AddScoped<IUserRepository, UserRepository>(); //Inyeccion de dependencia
 
+builder.Services.AddScoped<IContactRepository, ContactRepository>(); 
 
 var app = builder.Build();
 
